@@ -11,4 +11,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_test_page">TestPageActivity</string>
+    <string name="title_activity_random">RandomActivity</string>
 </resources>

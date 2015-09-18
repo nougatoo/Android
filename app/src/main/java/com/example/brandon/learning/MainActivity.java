@@ -62,4 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
+
+    //Opens up the test page activity
+    public void openTestPage(View view){
+        Intent intent = new Intent(this, RandomActivity.class);
+
+        startActivity(intent);
+    }
 }
