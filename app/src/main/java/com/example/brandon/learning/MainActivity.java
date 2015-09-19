@@ -1,6 +1,7 @@
 package com.example.brandon.learning;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import WorkoutFiles.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -76,18 +85,54 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //Opens up the test page activity
-    public void createWorkout(View view){
+    //Creates a workout object and goes to the page
+    public void createWorkout(View view) throws IOException {
 
-        //NEED TO PUT EXTRA THE THING THAT WE ENTER
-        EditText editText = (EditText) findViewById(R.id.nameWorkout);
-        String message = editText.getText().toString();
+        new AlertDialog.Builder(this)
+                .setTitle("Create New Workout")
+                .setMessage("This will erase your old workout")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Creating a new workout object
+                        Workout newWorkout = new Workout();
+                        newWorkout.setNamme("Dickfondler");
 
-        Intent intent = new Intent(this, CreateWorkoutActivity.class).putExtra("asdf", message);
+                        //Create the Activity
+                        EditText editText = (EditText) findViewById(R.id.nameWorkout);
+                        String message = editText.getText().toString();
+                        newWorkout.setNamme(message);
+                        Intent intent = new Intent(getApplicationContext(), CreateWorkoutActivity.class);
 
-        //workOutNameDialog();
+                        try {
+                            //Settuping Creating a new file
+                            FileOutputStream outputStream;
+                            FileOutputStream fos = openFileOutput("WorkoutPage", Context.MODE_PRIVATE);
+                            ObjectOutputStream os = new ObjectOutputStream(fos);
+                            os.writeObject(newWorkout);
+                            os.close();
+                            fos.close();
 
-        startActivity(intent);
+                            startActivity(intent);
+                        }
+                        catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                        return;
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+
+
+
     }
 
     public String workOutNameDialog()
