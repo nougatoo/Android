@@ -46,6 +46,30 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.brandon.learning.MainActivity" />
         </activity>
+        <activity
+            android:name=".GridTesterActivity"
+            android:label="@string/title_activity_grid_tester"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.brandon.learning.MainActivity" />
+        </activity>
+        <activity
+            android:name=".CreateWorkoutActivity"
+            android:label="@string/title_activity_create_workout"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.brandon.learning.MainActivity" />
+        </activity>
+        <activity
+            android:name=".CreateDayActivity"
+            android:label="@string/title_activity_create_day"
+            android:parentActivityName=".CreateWorkoutActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.brandon.learning.CreateWorkoutActivity" />
+        </activity>
     </application>
 
 </manifest>

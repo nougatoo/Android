@@ -7,10 +7,16 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_display_message_acivity">MyMessage</string>
     <string name="action_search">Search</string>
-
+    <string name="userInputWorkoutName"></string>
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_test_page">TestPageActivity</string>
     <string name="title_activity_random">RandomActivity</string>
+    <string name="title_activity_grid_tester">GridTesterActivity</string>
+    <string name="title_activity_create_workout">CreateWorkoutActivity</string>
+    <string name="title_activity_create_day">CreateDayActivity</string>
+    <string name="dialog_fire_missiles">Fire</string>
+    <string name="fire">fire</string>
+    <string name="cancel">cancel</string>
 </resources>
